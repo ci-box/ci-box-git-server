@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  git-server:
+    container_name: git-server
+    hostname: git-server
+    build:
+      context: ./
+      args:
+        version: latest
+    restart: always
+    volumes:
+      - ./repos:/git-server/repos
+      - ./pubkeys:/git-server/keys
+    ports:
+      - "2222:22"
